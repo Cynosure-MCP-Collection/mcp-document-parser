@@ -1,0 +1,28 @@
+{
+    "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+    "name": "io.github.andreasjhagen/document-parser",
+    "description": "MCP server that extracts text from documents and returns it as Markdown",
+    "version": "1.0.0",
+    "icons": [
+        {
+            "src": "https://raw.githubusercontent.com/andreasjhagen/Cynosure-MCPs/main/mcp-document-parser/icon.png",
+            "mimeType": "image/png"
+        }
+    ],
+    "packages": [
+        {
+            "registryType": "npm",
+            "identifier": "@cynosure-mcp/document-parser",
+            "version": "1.0.0",
+            "transport": {
+                "type": "stdio"
+            },
+            "environmentVariables": []
+        }
+    ],
+    "repository": {
+        "url": "https://github.com/andreasjhagen/Cynosure-MCPs",
+        "source": "github",
+        "subfolder": "mcp-document-parser"
+    }
+}

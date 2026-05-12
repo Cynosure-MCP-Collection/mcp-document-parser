@@ -1,7 +1,7 @@
 {
   "name": "@cynosure-mcp/document-parser",
   "mcpName": "io.github.andreasjhagen/document-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server that extracts text from documents (.docx, .pptx, .xlsx, .odt, .odp, .ods, .pdf, .rtf) and returns it as Markdown",
   "type": "module",
   "main": "dist/index.js",

@@ -1,6 +1,6 @@
 # @cynosure-mcp/document-parser
 
-MCP server that extracts text from documents and returns it as Markdown.
+MCP server that reads documents as Markdown and creates or edits DOCX files.
 
 ## Installation
 
@@ -17,10 +17,12 @@ document-parser
 
 ## Tools
 
-| Tool                   | Description                                                                       |
-| ---------------------- | --------------------------------------------------------------------------------- |
-| `parse_document`       | Parse a document file and return its contents as Markdown text                    |
-| `get_supported_formats`| Return the list of supported document formats                                     |
+| Tool                    | Description                                                                       |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| `parse_document`        | Parse a document file and return its contents as Markdown text                    |
+| `create_docx`           | Create and save a DOCX file from Markdown content                                |
+| `edit_docx`             | Edit an existing DOCX by replacing text and/or prepending/appending Markdown      |
+| `get_supported_formats` | Return the list of supported reader/writer formats                               |
 
 ### Supported Formats
 
@@ -34,6 +36,16 @@ document-parser
 | OpenDocument Text | .odt |
 | OpenDocument Presentation | .odp |
 | OpenDocument Spreadsheet | .ods |
+
+### Writable Format
+
+| Format | Extension |
+| ------ | --------- |
+| Word   | .docx     |
+
+`create_docx` supports headings, paragraphs, simple ordered/unordered lists, links, inline bold/italic/code, and Markdown tables.
+
+`edit_docx` parses an existing DOCX to Markdown, applies exact text replacements plus optional prepend/append Markdown, then saves a normalized DOCX copy. Complex Word formatting from the original document is not preserved.
 
 ## Configuration
 

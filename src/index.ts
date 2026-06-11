@@ -261,9 +261,9 @@ function markdownToDocxChildren(markdown: string): DocxChild[] {
 }
 
 async function writeDocx(markdown: string, outputPath: string, overwrite: boolean): Promise<string> {
-    const resolved = path.resolve(outputPath);
+    let resolved = path.resolve(outputPath);
     if (!DOCX_EXTENSIONS.has(path.extname(resolved).toLowerCase())) {
-        throw new Error('Output path must end with .docx');
+        resolved += '.docx'
     }
 
     await fs.mkdir(path.dirname(resolved), { recursive: true });
@@ -380,7 +380,7 @@ server.registerTool(
         description: 'Create and save a DOCX file from Markdown content. Returns the saved local file path so clients can show it as a downloadable artifact.',
         inputSchema: z.object({
             markdown: z.string().describe('Markdown content to write into the DOCX document. Supports headings, paragraphs, simple lists, links, inline bold/italic/code, and Markdown tables.'),
-            outputPath: z.string().describe('Where to save the DOCX file. Relative paths resolve from the MCP process working directory. Must end with .docx.'),
+            outputPath: z.string().describe('Where to save the DOCX file. Relative paths resolve from the MCP process working directory. The .docx extension is appended automatically if not provided.'),
             overwrite: z.boolean().optional().default(false).describe('Overwrite the output file if it already exists.'),
         }),
     },
@@ -406,7 +406,7 @@ server.registerTool(
         description: 'Edit an existing DOCX by parsing it to Markdown, applying text replacements and/or prepend/append Markdown, then saving a normalized DOCX copy. Existing complex Word formatting is not preserved.',
         inputSchema: z.object({
             filePath: z.string().describe('Path to the existing DOCX file to edit.'),
-            outputPath: z.string().describe('Where to save the edited DOCX file. Must end with .docx. Use a different path unless overwrite is true.'),
+            outputPath: z.string().describe('Where to save the edited DOCX file. The .docx extension is appended automatically if not provided. Use a different path unless overwrite is true.'),
             replacements: z.array(z.object({
                 search: z.string().describe('Exact text to find in the parsed Markdown.'),
                 replace: z.string().describe('Replacement text.'),

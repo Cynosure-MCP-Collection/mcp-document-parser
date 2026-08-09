@@ -330,6 +330,7 @@ const server = new McpServer({
 server.registerTool(
     'parse_document',
     {
+        annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
         description: 'Parse a document file and return its contents as Markdown text. Supported formats: .docx, .pptx, .xlsx, .odt, .odp, .ods, .pdf, .rtf. OCR is available for image extraction if requested.',
         inputSchema: z.object({
             filePath: z.string().describe('Absolute or relative path to the document file to parse.'),
@@ -377,6 +378,7 @@ server.registerTool(
 server.registerTool(
     'create_docx',
     {
+        annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
         description: 'Create and save a DOCX file from Markdown content. Returns the saved local file path so clients can show it as a downloadable artifact.',
         inputSchema: z.object({
             markdown: z.string().describe('Markdown content to write into the DOCX document. Supports headings, paragraphs, simple lists, links, inline bold/italic/code, and Markdown tables.'),
@@ -403,6 +405,7 @@ server.registerTool(
 server.registerTool(
     'edit_docx',
     {
+        annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: false },
         description: 'Edit an existing DOCX by parsing it to Markdown, applying text replacements and/or prepend/append Markdown, then saving a normalized DOCX copy. Existing complex Word formatting is not preserved.',
         inputSchema: z.object({
             filePath: z.string().describe('Path to the existing DOCX file to edit.'),
@@ -443,6 +446,7 @@ server.registerTool(
 server.registerTool(
     'get_supported_formats',
     {
+        annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
         description: 'Return the list of document formats supported by this reader/writer.',
         inputSchema: z.object({}),
     },

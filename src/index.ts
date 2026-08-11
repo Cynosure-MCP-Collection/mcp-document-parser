@@ -324,7 +324,7 @@ const server = new McpServer({
     name: 'document-reader-writer',
     version: '1.1.0',
     description: 'Read documents as Markdown and create or edit DOCX files.',
-    icons: [{ src: 'https://raw.githubusercontent.com/andreasjhagen/Cynosure-MCPs/main/mcp-document-parser/icon.png', mimeType: 'image/png' }],
+    icons: [{ src: 'https://unpkg.com/@cynosure-mcp/document-parser@1.1.1/icon.png', mimeType: 'image/png' }],
 });
 
 server.registerTool(

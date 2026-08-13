@@ -43,5 +43,13 @@
     "pptx",
     "xlsx",
     "office"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cynosure-MCP-Collection/mcp-document-parser.git"
+  },
+  "homepage": "https://github.com/Cynosure-MCP-Collection/mcp-document-parser#readme",
+  "bugs": {
+    "url": "https://github.com/Cynosure-MCP-Collection/mcp-document-parser/issues"
+  }
 }
